@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class BGLooper : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    int numBGPanels = 6;
+
+    void OnTriggerEnter2D (Collider2D collider) 
+    {
+        float widthofBGObject = ((BoxCollider2D)collider).size.x;
+
+        Vector3 pos = collider.transform.position;
+
+        pos.x += widthofBGObject * numBGPanels - widthofBGObject/2;
+
+        collider.transform.position = pos;
+    }
 }
+
