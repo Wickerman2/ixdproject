@@ -1,20 +1,37 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
 public class BGLooper : MonoBehaviour {
 
-    int numBGPanels = 6;
+	int numBGPanels = 6;
 
-    void OnTriggerEnter2D (Collider2D collider) 
-    {
-        float widthofBGObject = ((BoxCollider2D)collider).size.x;
+	public float seedMax = 1.65f;
+	public float seedMin = 0.47f;
 
-        Vector3 pos = collider.transform.position;
+	void Start() {
+		GameObject[] pipes = GameObject.FindGameObjectsWithTag("Pipe");
 
-        pos.x += widthofBGObject * numBGPanels - widthofBGObject/2;
+		foreach(GameObject pipe in pipes) {
+			Vector3 pos = pipe.transform.position;
+			pos.y = Random.Range(seedMin, seedMax);
+			pipe.transform.position = pos;
+		}
+	}
 
-        collider.transform.position = pos;
-    }
+	void OnTriggerEnter2D(Collider2D collider) {
+
+		float widthOfBGObject = ((BoxCollider2D)collider).size.x;
+
+		Vector3 pos = collider.transform.position;
+
+		pos.x += widthOfBGObject * numBGPanels;
+
+		if(collider.tag == "Seed") {
+			pos.y = Random.Range(seedMin, seedMax);
+            pos.x = pos.x + 6.0f;
+		}
+
+		collider.transform.position = pos;
+
+	}
 }
-

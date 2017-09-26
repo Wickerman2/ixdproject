@@ -1,84 +1,87 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
 public class BirdMovement : MonoBehaviour {
 
-    public Vector3 flapVelocity; 
-    bool didFlap = false;
-    public float maxSpeed = 5f;
-    float forwardSpeed = 1f;
-    public Rigidbody2D rb;
-    float flapSpeed = 200f;
-    Animator animator; 
+	Vector3 velocity = Vector3.zero;
+	public float flapSpeed    = 150f;
+	public float forwardSpeed = 1f;
 
+	bool didFlap = false;
 
-    // Use this for initialization
-    void Start () {
-        rb = GetComponent<Rigidbody2D>();
-        animator = transform.GetComponentInChildren<Animator>();
+	Animator animator;
 
-        if (animator == null)
-        {
-            Debug.Log("ani");
-        }
+	public bool dead = false;
+	float deathCooldown;
+
+	public bool godMode = false;
+
+	// Use this for initialization
+	void Start () {
+		animator = transform.GetComponentInChildren<Animator>();
+
+		if(animator == null) {
+			Debug.LogError("Didn't find animator!");
+		}
 	}
-    // For Graphic & Input updates
-    void Update() {
-        if(Input.GetKeyDown(KeyCode.Space)) {
-            didFlap = true;
-        }
-    }
 
-    // For physic engine updates
-    void FixedUpdate () {
-        rb.AddForce(Vector2.right * forwardSpeed);
+	// Do Graphic & Input updates here
+	void Update() {
 
-        if (didFlap)
-        {
-            animator.SetTrigger("DoFlap");
-            rb.AddForce(Vector2.up * flapSpeed);
+		if(dead) {
+			deathCooldown -= Time.deltaTime;
 
-            didFlap = false;
-        }
+			if(deathCooldown <= 0) {
+				if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) ) {
+					//Application.LoadLevel( Application.loadedLevel );
+				}
+			}
+		}
+		else {
+			if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) ) {
+				didFlap = true;
+			}
+		}
+	}
+
+	
+	// Do physics engine updates here
+	void FixedUpdate () {
+
+		if(dead)
+			return;
+
+		GetComponent<Rigidbody2D>().AddForce( Vector2.right * forwardSpeed );
+
+		if(didFlap) {
+			GetComponent<Rigidbody2D>().AddForce( Vector2.up * flapSpeed );
+			animator.SetTrigger("DoFlap");
+			didFlap = false;
+		}
         /*
-        if (rb.velocity.y > 0)
+		if(GetComponent<Rigidbody2D>().velocity.y > 0) {
+			transform.rotation = Quaternion.Euler(0, 0, 0);
+		}
+		else {
+			float angle = Mathf.Lerp (0, -15, (-GetComponent<Rigidbody2D>().velocity.y / 3f) );
+			transform.rotation = Quaternion.Euler(0, 0, angle);
+		}
+        */
+	}
+
+	void OnCollisionEnter2D(Collision2D collision) {
+		/*if(godMode)
+			return;
+
+		animator.SetTrigger("Death");
+		dead = true;
+		deathCooldown = 0.5f;
+        */
+        /*
+        if (collision.gameObject.tag == "Seed")
         {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            Score.AddPoint();
         }
-        else
-        {
-            float angle = Mathf.Lerp(0, -90, rb.velocity.y / 2f);
-            transform.rotation = Quaternion.Euler(0, 0, angle);
-            }
-            */
-        }
-
-
-
-    /*velocity.x = forwardSpeed; 
-
-    if (didFlap == true)
-    {
-        didFlap = false;
-        if (velocity.y < 0)
-        {
-            velocity.y = 0;
-        }
-
-        velocity += flapVelocity;
-    }
-
-    velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
-
-
-
-    // To make the bird angle downwards
-    float angle = 0;
-    if (velocity.y < 0)
-    {
-        angle = Mathf.Lerp(0, -90, -velocity.y / maxSpeed);
-    }
-
-    transform.rotation = Quaternion.Euler(0, 0, angle);*/
+        */
+	}
 }

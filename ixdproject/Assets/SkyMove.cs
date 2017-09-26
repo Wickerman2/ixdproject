@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SkyMove : MonoBehaviour {
-
     float speed = 0.9f;
 
 	void FixedUpdate () {
