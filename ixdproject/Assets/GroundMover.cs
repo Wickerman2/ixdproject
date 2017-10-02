@@ -5,7 +5,8 @@ public class GroundMover : MonoBehaviour {
 
 	Rigidbody2D player;
 
-	void Start () {
+
+    void Start () {
 		GameObject player_go = GameObject.FindGameObjectWithTag("Player");
 		
 		if(player_go == null) {

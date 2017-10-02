@@ -82,9 +82,11 @@
     <Compile Include="Assets\BirdMovement.cs" />
     <Compile Include="Assets\CameraTracksPlayer.cs" />
     <Compile Include="Assets\GroundMover.cs" />
+    <Compile Include="Assets\MiddleGroundMover.cs" />
+    <Compile Include="Assets\PickupSeed.cs" />
     <Compile Include="Assets\Score.cs" />
     <Compile Include="Assets\ScorePoint.cs" />
-    <Compile Include="Assets\SeedPickUp.cs" />
+    <Compile Include="Assets\SeedPickup.cs" />
     <Compile Include="Assets\StartScreenScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

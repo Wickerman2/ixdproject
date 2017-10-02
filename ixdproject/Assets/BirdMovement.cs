@@ -1,63 +1,74 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BirdMovement : MonoBehaviour {
+public class BirdMovement : MonoBehaviour
+{
 
-	Vector3 velocity = Vector3.zero;
-	public float flapSpeed    = 150f;
-	public float forwardSpeed = 1f;
+    public float flapSpeed = 150f;
+    public float forwardSpeed = 1f;
 
-	bool didFlap = false;
+    bool didFlap = false;
 
-	Animator animator;
+    Animator animator;
 
-	public bool dead = false;
-	float deathCooldown;
+    public bool dead = false;
+    float deathCooldown;
 
-	public bool godMode = false;
+    public bool godMode = false;
 
-	// Use this for initialization
-	void Start () {
-		animator = transform.GetComponentInChildren<Animator>();
+    // Use this for initialization
+    void Start()
+    {
+        animator = transform.GetComponentInChildren<Animator>();
 
-		if(animator == null) {
-			Debug.LogError("Didn't find animator!");
-		}
-	}
+        if (animator == null)
+        {
+            Debug.LogError("Didn't find animator!");
+        }
+    }
 
-	// Do Graphic & Input updates here
-	void Update() {
+    // Do Graphic & Input updates here
+    void Update()
+    {
 
-		if(dead) {
-			deathCooldown -= Time.deltaTime;
+        if (dead)
+        {
+            deathCooldown -= Time.deltaTime;
 
-			if(deathCooldown <= 0) {
-				if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) ) {
-					//Application.LoadLevel( Application.loadedLevel );
-				}
-			}
-		}
-		else {
-			if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) ) {
-				didFlap = true;
-			}
-		}
-	}
+            if (deathCooldown <= 0)
+            {
+                if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+                {
+                    //Application.LoadLevel( Application.loadedLevel );
+                }
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+            {
+                didFlap = true;
+            }
+        }
+    }
 
-	
-	// Do physics engine updates here
-	void FixedUpdate () {
 
-		if(dead)
-			return;
+    // Do physics engine updates here
+    void FixedUpdate()
+    {
 
-		GetComponent<Rigidbody2D>().AddForce( Vector2.right * forwardSpeed );
+        if (dead)
+            return;
 
-		if(didFlap) {
-			GetComponent<Rigidbody2D>().AddForce( Vector2.up * flapSpeed );
-			animator.SetTrigger("DoFlap");
-			didFlap = false;
-		}
+        GetComponent<Rigidbody2D>().AddForce(Vector2.right * forwardSpeed);
+
+        if (didFlap)
+        {
+            animator.SetTrigger("DoFlap");
+            GetComponent<Rigidbody2D>().AddForce(Vector2.up * flapSpeed);
+            
+            didFlap = false;
+        }
         /*
 		if(GetComponent<Rigidbody2D>().velocity.y > 0) {
 			transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -67,10 +78,11 @@ public class BirdMovement : MonoBehaviour {
 			transform.rotation = Quaternion.Euler(0, 0, angle);
 		}
         */
-	}
+    }
 
-	void OnCollisionEnter2D(Collision2D collision) {
-		/*if(godMode)
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        /*if(godMode)
 			return;
 
 		animator.SetTrigger("Death");
@@ -83,5 +95,5 @@ public class BirdMovement : MonoBehaviour {
             Score.AddPoint();
         }
         */
-	}
+    }
 }
