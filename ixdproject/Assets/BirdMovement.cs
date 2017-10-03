@@ -47,7 +47,8 @@ public class BirdMovement : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
-                didFlap = true;
+                //didFlap = true;
+                doFlap();
             }
         }
     }
@@ -64,10 +65,7 @@ public class BirdMovement : MonoBehaviour
 
         if (didFlap)
         {
-            animator.SetTrigger("DoFlap");
-            GetComponent<Rigidbody2D>().AddForce(Vector2.up * flapSpeed);
-            
-            didFlap = false;
+          //  DoFlap();
         }
         /*
 		if(GetComponent<Rigidbody2D>().velocity.y > 0) {
@@ -78,6 +76,14 @@ public class BirdMovement : MonoBehaviour
 			transform.rotation = Quaternion.Euler(0, 0, angle);
 		}
         */
+    }
+
+    public void doFlap ()
+    {
+        animator.SetTrigger("DoFlap");
+        GetComponent<Rigidbody2D>().AddForce(Vector2.up * flapSpeed);
+
+        //didFlap = false;
     }
 
     void OnCollisionEnter2D(Collision2D collision)

@@ -78,11 +78,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="ixdproject.Plugins.csproj">
+      <Project>{1E0A40BC-AC35-A1C2-BE71-5899C75EA6B9}</Project>
+      <Name>ixdproject.Plugins</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Assets\BGLooper.cs" />
     <Compile Include="Assets\BirdMovement.cs" />
+    <Compile Include="Assets\BodySourceManager.cs" />
+    <Compile Include="Assets\BodySourceView.cs" />
     <Compile Include="Assets\CameraTracksPlayer.cs" />
+    <Compile Include="Assets\ColorSourceManager.cs" />
+    <Compile Include="Assets\ColorSourceView.cs" />
+    <Compile Include="Assets\DepthSourceManager.cs" />
+    <Compile Include="Assets\DepthSourceView.cs" />
+    <Compile Include="Assets\DetectJoints.cs" />
+    <Compile Include="Assets\DisableOnStart.cs" />
     <Compile Include="Assets\GroundMover.cs" />
+    <Compile Include="Assets\InfraredSourceManager.cs" />
+    <Compile Include="Assets\InfraredSourceView.cs" />
     <Compile Include="Assets\MiddleGroundMover.cs" />
+    <Compile Include="Assets\MultiSourceManager.cs" />
     <Compile Include="Assets\PickupSeed.cs" />
     <Compile Include="Assets\Score.cs" />
     <Compile Include="Assets\ScorePoint.cs" />
