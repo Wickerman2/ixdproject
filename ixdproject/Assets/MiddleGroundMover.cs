@@ -23,7 +23,7 @@ public class MiddleGroundMover : MonoBehaviour
 
     void FixedUpdate()
     {
-        float vel = player.velocity.x * 0.85f;
+        float vel = player.velocity.x * 0.50f;
 
         transform.position = transform.position + Vector3.right * vel * Time.deltaTime;
     }
