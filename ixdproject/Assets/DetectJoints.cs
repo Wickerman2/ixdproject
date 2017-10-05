@@ -13,7 +13,7 @@ public class DetectJoints : MonoBehaviour
     public JointType HandRight;
     public float multiplier = 10f;
     float timer;
-    public float threshold;
+    public float flapthreshold;
 
     GameObject LeftHandCube;
     GameObject RightHandCube;
@@ -31,7 +31,6 @@ public class DetectJoints : MonoBehaviour
 
     // Use this for initialization
     void Start () {
-
         instanceOfBM = GameObject.Find("PlayerBird").GetComponent<BirdMovement>();
 
 
@@ -78,9 +77,9 @@ public class DetectJoints : MonoBehaviour
                 currentRightHandPositionY = body.Joints[HandRight].Position.Y;
 
                 timer += Time.deltaTime;
-                if (timer > 0.2f)
+                if (timer > 0.10f)
                 {
-                    if (previousLeftHandPositionY - currentLeftHandPositionY > threshold && previousRightHandPositionY - currentRightHandPositionY > threshold)
+                    if (previousLeftHandPositionY - currentLeftHandPositionY > flapthreshold && previousRightHandPositionY - currentRightHandPositionY > flapthreshold)
                     {
                         Debug.Log("Flap!");
                         instanceOfBM.doFlap();

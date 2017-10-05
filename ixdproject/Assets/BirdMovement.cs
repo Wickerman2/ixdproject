@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.IO.Ports;
 
 public class BirdMovement : MonoBehaviour
 {
 
     public float flapSpeed = 150f;
     public float forwardSpeed = 1f;
+    SerialPort myData = new SerialPort("COM4", 19200);
 
     bool didFlap = false;
 
