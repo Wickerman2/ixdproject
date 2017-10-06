@@ -11,9 +11,11 @@ public class DetectJoints : MonoBehaviour
 
     public JointType HandLeft;
     public JointType HandRight;
-    public float multiplier = 10f;
     float timer;
+    float timer2;
     public float flapthreshold;
+    bool flapInProgress;
+
 
     GameObject LeftHandCube;
     GameObject RightHandCube;
@@ -21,19 +23,21 @@ public class DetectJoints : MonoBehaviour
     Transform rightHandTransform;
     int bodyCount;
     private Body[] bodies;
+    public Body body;
 
     float previousLeftHandPositionY;
     float previousRightHandPositionY;
     float currentLeftHandPositionY;
     float currentRightHandPositionY;
 
+    private ulong currTrackingId = 0;
     public BirdMovement instanceOfBM;
 
     // Use this for initialization
     void Start () {
+
+
         instanceOfBM = GameObject.Find("PlayerBird").GetComponent<BirdMovement>();
-
-
         if (BodySrcManager == null)
         {
             Debug.Log("BodySourceManager is null! Assign a bodysrcManager ");
@@ -43,89 +47,75 @@ public class DetectJoints : MonoBehaviour
             bodyManager = BodySrcManager.GetComponent<BodySourceManager>();
 
         }
+        body = GetActiveBody();
     }
-	
-	// Update is called once per frame
-	void Update () {
 
+    void Update()
+    {
+        body = GetActiveBody();
+        if (body != null)
+        {
+            trackBody(body);
+        }
+    }
 
+    private void trackBody(Body body)
+    {
+        if (body.IsTracked)
+        {
+            currentLeftHandPositionY = body.Joints[HandLeft].Position.Y;
+            currentRightHandPositionY = body.Joints[HandRight].Position.Y;
 
+            timer += Time.deltaTime;
+            if (timer > 0.15f)
+            {
+                if (previousLeftHandPositionY - currentLeftHandPositionY > flapthreshold && previousRightHandPositionY - currentRightHandPositionY > flapthreshold)
+                {
+                    Debug.Log("Flap!");
+                    instanceOfBM.doFlap();
+                }
+                previousLeftHandPositionY = currentLeftHandPositionY;
+                previousRightHandPositionY = currentRightHandPositionY;
+                timer = 0f;
+            }
+        }
+    }
+
+    private Body GetActiveBody()
+    {
         if (bodyManager == null)
         {
             Debug.Log("Body manager is null!");
-            return;
         }
         bodies = bodyManager.GetData();
 
-        //Debug.Log(Time.time);
-
-        if (bodies == null)
+        if (currTrackingId <= 0)
         {
-            return;
+            foreach (Body body in bodies)
+            {
+                if (body.IsTracked)
+                {
+                    currTrackingId = body.TrackingId;
+                    return body;
+                }
+            }
+
+            return null;
         }
-        foreach (var body in bodies)
+        else
         {
-            //bodyCount++;
-            //Debug.Log("Bodycount: " + bodyCount);
-            if (body == null)
+            foreach (Body body in bodies)
             {
-                continue;
-            }
-            if (body.IsTracked)
-            {
-                currentLeftHandPositionY = body.Joints[HandLeft].Position.Y;
-                currentRightHandPositionY = body.Joints[HandRight].Position.Y;
-
-                timer += Time.deltaTime;
-                if (timer > 0.10f)
+                if (body.IsTracked && body.TrackingId == currTrackingId)
                 {
-                    if (previousLeftHandPositionY - currentLeftHandPositionY > flapthreshold && previousRightHandPositionY - currentRightHandPositionY > flapthreshold)
-                    {
-                        Debug.Log("Flap!");
-                        instanceOfBM.doFlap();
-
-                        //instanceOfB.GetComponent<BirdMovement>().doFlap();
-                        //Debug.Log("Diff Left " + (currentLeftHandPositionY - previousLeftHandPositionY));
-                        //Debug.Log("Diff Right " + (currentRightHandPositionY - previousRightHandPositionY));
-                    }
-                    //Debug.Log(previousLeftHandPositionY);
-                    //Debug.Log(previousRightHandPositionY);
-                    previousLeftHandPositionY = currentLeftHandPositionY;
-                    previousRightHandPositionY = currentRightHandPositionY;
-                    timer = 0f;
+                    return body;
                 }
-
-                /*
-                var LeftHandPosition = body.Joints[HandLeft].Position;
-                var RightHandPosition = body.Joints[HandRight].Position;
-
-
-
-                //Debug.Log("Current Left : " + currentLeftHandPosition.Y);
-                //Debug.Log("Current Right : " + currentRightHandPosition.Y);
-
-
-
-                LeftHandCube = GameObject.Find("LeftHandCube");
-                RightHandCube = GameObject.Find("RightHandCube");
-
-                LeftHandCube.transform.position = new Vector3(LeftHandPosition.X * multiplier, LeftHandPosition.Y * multiplier);
-                RightHandCube.transform.position = new Vector3(RightHandPosition.X * multiplier, RightHandPosition.Y * multiplier);
-                
-                if (currentLeftHandPosition.Y > 0.0 && currentRightHandPosition.Y > 0.0f)
-                {
-                    //Debug.Log("Uppe!");
-                }
-                else if(currentLeftHandPosition.Y < 0.0  && currentRightHandPosition.Y < 0.0f)
-                {
-                    //Debug.Log("Ner!");
-                }*/
-
-            }
-            else if(!body.IsTracked)
-            {
-                //Debug.Log("No body tracked!");
             }
         }
-	}
+
+        currTrackingId = 0;
+        return GetActiveBody();
+    }
 }
+
+
