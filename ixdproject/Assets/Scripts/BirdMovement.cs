@@ -9,6 +9,9 @@ public class BirdMovement : MonoBehaviour
     public float forwardSpeed = 1f;
     SerialPort myData = new SerialPort("COM4", 19200);
 
+    public AudioClip flapAudio;
+    public AudioSource audioSource;
+
     bool didFlap = false;
 
     Animator animator;
@@ -22,6 +25,7 @@ public class BirdMovement : MonoBehaviour
     void Start()
     {
         animator = transform.GetComponentInChildren<Animator>();
+        audioSource.clip = flapAudio;
 
         if (animator == null)
         {
@@ -49,7 +53,6 @@ public class BirdMovement : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
-                //didFlap = true;
                 doFlap();
             }
         }
@@ -59,49 +62,14 @@ public class BirdMovement : MonoBehaviour
     // Do physics engine updates here
     void FixedUpdate()
     {
-
-        if (dead)
-            return;
-
         GetComponent<Rigidbody2D>().AddForce(Vector2.right * forwardSpeed);
-
-        if (didFlap)
-        {
-          //  DoFlap();
-        }
-        /*
-		if(GetComponent<Rigidbody2D>().velocity.y > 0) {
-			transform.rotation = Quaternion.Euler(0, 0, 0);
-		}
-		else {
-			float angle = Mathf.Lerp (0, -15, (-GetComponent<Rigidbody2D>().velocity.y / 3f) );
-			transform.rotation = Quaternion.Euler(0, 0, angle);
-		}
-        */
     }
 
     public void doFlap ()
     {
+        audioSource.Play();
         animator.SetTrigger("DoFlap");
         GetComponent<Rigidbody2D>().AddForce(Vector2.up * flapSpeed);
-
-        //didFlap = false;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        /*if(godMode)
-			return;
-
-		animator.SetTrigger("Death");
-		dead = true;
-		deathCooldown = 0.5f;
-        */
-        /*
-        if (collision.gameObject.tag == "Seed")
-        {
-            Score.AddPoint();
-        }
-        */
-    }
 }

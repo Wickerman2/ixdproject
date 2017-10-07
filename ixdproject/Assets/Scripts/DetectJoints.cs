@@ -14,7 +14,7 @@ public class DetectJoints : MonoBehaviour
     float timer;
     float timer2;
     public float flapthreshold;
-    bool flapInProgress;
+    bool flapInProgress = false;
 
 
     GameObject LeftHandCube;
@@ -29,9 +29,9 @@ public class DetectJoints : MonoBehaviour
     float previousRightHandPositionY;
     float currentLeftHandPositionY;
     float currentRightHandPositionY;
-
     private ulong currTrackingId = 0;
     public BirdMovement instanceOfBM;
+    int flapCount = 0;
 
     // Use this for initialization
     void Start () {
@@ -47,7 +47,6 @@ public class DetectJoints : MonoBehaviour
             bodyManager = BodySrcManager.GetComponent<BodySourceManager>();
 
         }
-        body = GetActiveBody();
     }
 
     void Update()
@@ -67,12 +66,11 @@ public class DetectJoints : MonoBehaviour
             currentRightHandPositionY = body.Joints[HandRight].Position.Y;
 
             timer += Time.deltaTime;
-            if (timer > 0.15f)
+            if (timer > 0.20f)
             {
                 if (previousLeftHandPositionY - currentLeftHandPositionY > flapthreshold && previousRightHandPositionY - currentRightHandPositionY > flapthreshold)
                 {
-                    Debug.Log("Flap!");
-                    instanceOfBM.doFlap();
+                        instanceOfBM.doFlap();
                 }
                 previousLeftHandPositionY = currentLeftHandPositionY;
                 previousRightHandPositionY = currentRightHandPositionY;
@@ -93,6 +91,8 @@ public class DetectJoints : MonoBehaviour
         {
             foreach (Body body in bodies)
             {
+                
+
                 if (body.IsTracked)
                 {
                     currTrackingId = body.TrackingId;
