@@ -68,13 +68,16 @@ public class DetectJoints : MonoBehaviour
             timer += Time.deltaTime;
             if (timer > 0.20f)
             {
-                if (previousLeftHandPositionY - currentLeftHandPositionY > flapthreshold && previousRightHandPositionY - currentRightHandPositionY > flapthreshold)
+                if (timer > 0.15)
                 {
+                    if (previousLeftHandPositionY - currentLeftHandPositionY > flapthreshold && previousRightHandPositionY - currentRightHandPositionY > flapthreshold)
+                    {
                         instanceOfBM.doFlap();
+                    }
+                    previousLeftHandPositionY = currentLeftHandPositionY;
+                    previousRightHandPositionY = currentRightHandPositionY;
+                    timer = 0f;
                 }
-                previousLeftHandPositionY = currentLeftHandPositionY;
-                previousRightHandPositionY = currentRightHandPositionY;
-                timer = 0f;
             }
         }
     }
