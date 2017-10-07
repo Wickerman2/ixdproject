@@ -14,7 +14,6 @@ public class PickupSeed : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        GameObject player_go = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -40,7 +39,6 @@ public class PickupSeed : MonoBehaviour
         Vector3 pos = transform.position;
         pos.y = Random.Range(seedMin, seedMax);
         pos.x = pos.x + 50f;
-       // pos.x = player.transform.position.x + 22f;
         Instantiate(gameObject, pos, transform.rotation);
     }
 

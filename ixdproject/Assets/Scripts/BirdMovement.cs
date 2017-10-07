@@ -12,7 +12,6 @@ public class BirdMovement : MonoBehaviour
     public AudioClip flapAudio;
     public AudioSource audioSource;
 
-    bool didFlap = false;
 
     Animator animator;
 

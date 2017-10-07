@@ -12,10 +12,7 @@ public class DetectJoints : MonoBehaviour
     public JointType HandLeft;
     public JointType HandRight;
     float timer;
-    float timer2;
-    public float flapthreshold;
-    bool flapInProgress = false;
-
+    float flapthreshold;
 
     GameObject LeftHandCube;
     GameObject RightHandCube;
@@ -29,9 +26,11 @@ public class DetectJoints : MonoBehaviour
     float previousRightHandPositionY;
     float currentLeftHandPositionY;
     float currentRightHandPositionY;
+    float currentLeftHandPositionX;
+    float currentRightHandPositionX;
     private ulong currTrackingId = 0;
     public BirdMovement instanceOfBM;
-    int flapCount = 0;
+    bool GameStarted = true;
 
     // Use this for initialization
     void Start () {
@@ -51,10 +50,13 @@ public class DetectJoints : MonoBehaviour
 
     void Update()
     {
-        body = GetActiveBody();
-        if (body != null)
+        if (GameStarted == true)
         {
-            trackBody(body);
+            body = GetActiveBody();
+            if (body != null)
+            {
+                trackBody(body);
+            }
         }
     }
 
@@ -64,11 +66,15 @@ public class DetectJoints : MonoBehaviour
         {
             currentLeftHandPositionY = body.Joints[HandLeft].Position.Y;
             currentRightHandPositionY = body.Joints[HandRight].Position.Y;
+            currentLeftHandPositionX = body.Joints[HandLeft].Position.X;
+            currentRightHandPositionX = body.Joints[HandRight].Position.X;
+
+            flapthreshold = (currentRightHandPositionX - currentLeftHandPositionX) / 2.5f;
 
             timer += Time.deltaTime;
-            if (timer > 0.20f)
+            if (timer > 0.25f)
             {
-                if (timer > 0.15)
+                if (timer > 0.20)
                 {
                     if (previousLeftHandPositionY - currentLeftHandPositionY > flapthreshold && previousRightHandPositionY - currentRightHandPositionY > flapthreshold)
                     {
@@ -94,8 +100,6 @@ public class DetectJoints : MonoBehaviour
         {
             foreach (Body body in bodies)
             {
-                
-
                 if (body.IsTracked)
                 {
                     currTrackingId = body.TrackingId;
