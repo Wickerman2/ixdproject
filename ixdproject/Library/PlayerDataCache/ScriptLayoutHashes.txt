@@ -14,7 +14,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 c24a21b131bfa67be1162db2cba4b52b UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.DepthSourceManager
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.StartScreenScript
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Score
+976880eea5fd3032d2189343276181ed Assembly-CSharp.dll:.Score
 f9daf66c3f68ea26fa46c127bdaa3d6a Assembly-CSharp.dll:.BGLooper
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.MultiSourceManager
 a35dc9cca2faebc5f5f1aeb9e8e47bbe UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
@@ -119,7 +119,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.Spa
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.InfraredSourceManager
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ColorSourceManager
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.MiddleGroundMover
-e3a791d2aceead70518ca9216e1a7c8b Assembly-CSharp.dll:.BirdMovement
+d7e9becabd3710194048610a26a2c735 Assembly-CSharp.dll:.BirdMovement
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BodySourceManager
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
@@ -136,7 +136,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 73843688b51256aed059f049c540bca8 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 528ea1fd7c01796fc60c4e2f172ea229 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 eaae5f6d2e7de0f1820574b79a87d60a Assembly-CSharp.dll:.PickupSeed
-70e0c2a0a719f2471f08ab6350363b9f Assembly-CSharp.dll:.DetectJoints
+8e9e9bb7e92224841764668055e1c3ff Assembly-CSharp.dll:.DetectJoints
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.PlayModeRunnerCallback
 5f2ad81aa8994e8fbe25d1e57afe6773 UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.PlaymodeTestsController
 64eb32cc721b1cc68a91ed57461e188c UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.RemoteTestResultSender
