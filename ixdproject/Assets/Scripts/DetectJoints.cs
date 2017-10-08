@@ -30,12 +30,10 @@ public class DetectJoints : MonoBehaviour
     float currentRightHandPositionX;
     private ulong currTrackingId = 0;
     public BirdMovement instanceOfBM;
-    bool GameStarted = true;
+    public bool GameStarted = false;
 
     // Use this for initialization
     void Start () {
-
-
         instanceOfBM = GameObject.Find("PlayerBird").GetComponent<BirdMovement>();
         if (BodySrcManager == null)
         {
@@ -72,9 +70,9 @@ public class DetectJoints : MonoBehaviour
             flapthreshold = (currentRightHandPositionX - currentLeftHandPositionX) / 2.5f;
 
             timer += Time.deltaTime;
-            if (timer > 0.25f)
+            if (timer > 0.20f)
             {
-                if (timer > 0.20)
+                if (timer > 0.15)
                 {
                     if (previousLeftHandPositionY - currentLeftHandPositionY > flapthreshold && previousRightHandPositionY - currentRightHandPositionY > flapthreshold)
                     {
@@ -94,6 +92,7 @@ public class DetectJoints : MonoBehaviour
         {
             Debug.Log("Body manager is null!");
         }
+
         bodies = bodyManager.GetData();
 
         if (currTrackingId <= 0)
@@ -101,7 +100,7 @@ public class DetectJoints : MonoBehaviour
             foreach (Body body in bodies)
             {
                 if (body.IsTracked)
-                {
+                {                  
                     currTrackingId = body.TrackingId;
                     return body;
                 }
@@ -119,7 +118,6 @@ public class DetectJoints : MonoBehaviour
                 }
             }
         }
-
         currTrackingId = 0;
         return GetActiveBody();
     }
