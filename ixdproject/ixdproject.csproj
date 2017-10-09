@@ -84,7 +84,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CountDownTimer.cs" />
+    <Compile Include="Assets\GameTime.cs" />
     <Compile Include="Assets\Scripts\BGLooper.cs" />
     <Compile Include="Assets\Scripts\BirdMovement.cs" />
     <Compile Include="Assets\Scripts\BodySourceManager.cs" />
@@ -92,6 +92,7 @@
     <Compile Include="Assets\Scripts\CameraTracksPlayer.cs" />
     <Compile Include="Assets\Scripts\ColorSourceManager.cs" />
     <Compile Include="Assets\Scripts\ColorSourceView.cs" />
+    <Compile Include="Assets\Scripts\CountDownTimer.cs" />
     <Compile Include="Assets\Scripts\DepthSourceManager.cs" />
     <Compile Include="Assets\Scripts\DepthSourceView.cs" />
     <Compile Include="Assets\Scripts\DetectJoints.cs" />

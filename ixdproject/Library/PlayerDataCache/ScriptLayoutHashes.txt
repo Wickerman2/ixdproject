@@ -121,6 +121,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.Spa
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.MiddleGroundMover
 d7e9becabd3710194048610a26a2c735 Assembly-CSharp.dll:.BirdMovement
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BodySourceManager
+b44fada5034735ff456602048160fe9b Assembly-CSharp.dll:.CountDownTimer
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 60b2bb652410a5867a5ab9a01cd38461 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -151,4 +152,3 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.Spa
 0ed6872af1fdf77c68b420ba97653160 Assembly-CSharp.dll:.BodySourceView
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ScorePoint
 760d61dcd067c1148397c7cadd4f2e33 Assembly-CSharp.dll:.InfraredSourceView
-b44fada5034735ff456602048160fe9b Assembly-CSharp.dll:.CountDownTimer

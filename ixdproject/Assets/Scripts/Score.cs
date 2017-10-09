@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.IO.Ports;
+using UnityEngine.SceneManagement;
+
 
 
 public class Score : MonoBehaviour
@@ -72,11 +74,6 @@ public class Score : MonoBehaviour
     void Update()
     {
         GetComponent<GUIText>().text = "" + score;
-
-
-
-
-
     }
 
     public void SendToArduino()
