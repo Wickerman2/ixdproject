@@ -12,11 +12,10 @@ public class CountDownTimer : MonoBehaviour {
     private Rigidbody2D BM_RB;
 
 
-    float cd_timer = 4.0f;
+    float cd_timer = 3.5f;
 
     // Use this for initialization
     void Start () {
-        GetComponent<GUIText>().enabled = false;
         DJ = GameObject.Find("PlayerBird").GetComponent<DetectJoints>();
         BM = GameObject.Find("PlayerBird").GetComponent<BirdMovement>();
         BM_RB = GameObject.Find("PlayerBird").GetComponent<Rigidbody2D>();

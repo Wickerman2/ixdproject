@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class Score : MonoBehaviour
 {
 
-    static int score = 0;
+    public static int score = 0;
     static int highScore = 0;
     public SerialPort myData = new SerialPort("COM6", 19200);
     public Score instanceOfScore;
