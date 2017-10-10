@@ -7,21 +7,14 @@ public class BGLooper : MonoBehaviour
     int numBGPanels = 3;
     Transform player;
 
-    public float seedMax = 1.65f;
-    public float seedMin = 0.47f;
+    public float berryMax = 1.65f;
+    public float berryMin = 0.47f;
 
     void Start()
     {
-        GameObject[] pipes = GameObject.FindGameObjectsWithTag("Pipe");
         GameObject player_go = GameObject.FindGameObjectWithTag("Player");
         player = player_go.transform;
 
-        foreach (GameObject pipe in pipes)
-        {
-            Vector3 pos = pipe.transform.position;
-            pos.y = Random.Range(seedMin, seedMax);
-            pipe.transform.position = pos;
-        }
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -33,9 +26,10 @@ public class BGLooper : MonoBehaviour
 
         pos.x += widthOfBGObject * numBGPanels;
 
-        if (collider.tag == "Seed")
+        if (collider.tag == "Berry")
         {
-            pos.y = Random.Range(seedMin, seedMax);
+            Debug.Log("Berry!");
+            pos.y = Random.Range(berryMin, berryMax);
             pos.x = player.transform.position.x + 22.0f;
         }
 

@@ -8,12 +8,15 @@ public class PickupSeed : MonoBehaviour
     public float seedMax = 1.65f;
     public float seedMin = 0.47f;
     public GameObject Seed;
-    public GameObject player_go;
+    public AudioSource audioSource;
+    public AudioClip pickupAudio;
+
 
 
     // Use this for initialization
     void Start()
     {
+        audioSource.clip = pickupAudio;
     }
 
     // Update is called once per frame
@@ -30,6 +33,8 @@ public class PickupSeed : MonoBehaviour
             Score.AddPoint();
             Destroy(this.gameObject);
             SpawnSeed();
+            audioSource.PlayOneShot(pickupAudio);
+
         }
     }
 

@@ -41,6 +41,13 @@ public class BirdMovement : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Berry"))
+        {
+            animator.SetTrigger("DoSwallow");
+        }
+    }
 
     // Do physics engine updates here
     void FixedUpdate()
@@ -50,7 +57,7 @@ public class BirdMovement : MonoBehaviour
 
     public void doFlap ()
     {
-        audioSource.Play();
+        audioSource.PlayOneShot(flapAudio);
         animator.SetTrigger("DoFlap");
         GetComponent<Rigidbody2D>().AddForce(Vector2.up * flapSpeed);
     }
