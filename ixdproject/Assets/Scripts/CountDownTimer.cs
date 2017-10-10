@@ -7,8 +7,8 @@ using UnityEngine;
 
 public class CountDownTimer : MonoBehaviour {
 
-    public DetectJoints DJ;
-    public BirdMovement BM;
+    private DetectJoints DJ;
+    private BirdMovement BM;
     private Rigidbody2D BM_RB;
 
 

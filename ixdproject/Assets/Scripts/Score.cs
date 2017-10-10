@@ -52,7 +52,7 @@ public class Score : MonoBehaviour
         score++;
 
         Score sc = new Score();
-        sc.SendToArduino();
+        //sc.SendToArduino();
 
 
         if (score > highScore)
