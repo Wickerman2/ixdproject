@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 
 public class GameControl : MonoBehaviour
 {
+
+    public Animator Anim;
+    public Image Img;
+
     // Use this for initialization
     void Start()
     {
@@ -20,7 +24,9 @@ public class GameControl : MonoBehaviour
         }
         else if(Input.GetKeyDown(KeyCode.Alpha2))
         {
-            SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
+            Debug.Log("2");
+            StartCoroutine(Fade("GameScene"));
+
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
@@ -30,5 +36,13 @@ public class GameControl : MonoBehaviour
         {
             SceneManager.LoadScene("LoseScene", LoadSceneMode.Single);
         }
+    }
+
+    IEnumerator Fade(string sceneName)
+    {
+        Debug.Log(sceneName);
+        Anim.SetBool("Fade", true);
+        yield return new WaitUntil(() => Img.color.a == 1);
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 }

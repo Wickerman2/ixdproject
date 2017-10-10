@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 
@@ -11,7 +12,8 @@ public class GameTime : MonoBehaviour
 {
     private DetectJoints DJ;
     private Score Score;
-
+    public Animator Anim;
+    public Image Img;
     public float gameTime = 30.0f;
 
 
@@ -37,14 +39,22 @@ public class GameTime : MonoBehaviour
         {
             if (Score.score < 3)
             {
-                SceneManager.LoadScene("LoseScene", LoadSceneMode.Single);
+                StartCoroutine(Fade("LoseScene"));
             }
             else if (Score.score >= 3)
             {
-                SceneManager.LoadScene("WinScene", LoadSceneMode.Single);
+                StartCoroutine(Fade("WinScene"));
             }
 
         }
+
+    }
+    IEnumerator Fade(string sceneName)
+    {
+        Debug.Log(sceneName);
+        Anim.SetBool("Fade", true);
+        yield return new WaitUntil(() => Img.color.a == 1);
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 }
 

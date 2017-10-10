@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class RestartTimer : MonoBehaviour
 {
     float restart_timer = 10.5f;
-
+    public Animator Anim;
+    public Image Img;
     // Use this for initialization
     void Start()
     {
@@ -25,10 +27,17 @@ public class RestartTimer : MonoBehaviour
         {
             GetComponent<GUIText>().enabled = true;
         }
-        else if (timer == "0")
+        else if (timer == "-1")
         {
-            SceneManager.LoadScene("LoadingScene", LoadSceneMode.Single);
+            StartCoroutine(Fade("LoadingScene"));
         }
+    }
+    IEnumerator Fade(string sceneName)
+    {
+        Debug.Log(sceneName);
+        Anim.SetBool("Fade", true);
+        yield return new WaitUntil(() => Img.color.a == 1);
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 }
 
