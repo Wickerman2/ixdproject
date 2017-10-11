@@ -17,12 +17,13 @@ public class BirdMovement : MonoBehaviour
 
     public bool dead = false;
     float deathCooldown;
-
+    float distance;
     public bool godMode = false;
 
     // Use this for initialization
     void Start()
     {
+
         animator = transform.GetComponentInChildren<Animator>();
         audioSource.clip = flapAudio;
 
@@ -30,6 +31,7 @@ public class BirdMovement : MonoBehaviour
         {
             Debug.LogError("Didn't find animator!");
         }
+
     }
 
     // Do Graphic & Input updates here
@@ -45,6 +47,7 @@ public class BirdMovement : MonoBehaviour
     {
         if (collision.CompareTag("Berry"))
         {
+            animator.SetTrigger("DoOpenMouth");
             animator.SetTrigger("DoSwallow");
         }
     }

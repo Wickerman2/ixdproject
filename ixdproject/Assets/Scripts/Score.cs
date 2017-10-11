@@ -75,11 +75,11 @@ public class Score : MonoBehaviour
     {
         GetComponent<GUIText>().text = "" + score;
     }
-
     public void SendToArduino()
     {
         myData.Open();
         myData.WriteLine("1");
         myData.Close();
     }
+
 }

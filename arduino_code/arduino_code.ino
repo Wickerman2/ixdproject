@@ -11,7 +11,7 @@
 #endif
 
 #define PIN            7
-#define DWN            8
+#define DWN            9
 #define TURN_TIME 200
 
 #define NUMPIXELS      60

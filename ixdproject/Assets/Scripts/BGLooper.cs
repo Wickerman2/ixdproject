@@ -28,7 +28,6 @@ public class BGLooper : MonoBehaviour
 
         if (collider.tag == "Berry")
         {
-            Debug.Log("Berry!");
             pos.y = Random.Range(berryMin, berryMax);
             pos.x = player.transform.position.x + 22.0f;
         }

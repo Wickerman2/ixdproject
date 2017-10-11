@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.IO.Ports;
+
 
 
 
@@ -15,6 +17,8 @@ public class GameTime : MonoBehaviour
     public Animator Anim;
     public Image Img;
     public float gameTime = 30.0f;
+    public SerialPort myData = new SerialPort("COM6", 19200);
+
 
 
     private void Start()
@@ -25,6 +29,7 @@ public class GameTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         var minutes = Mathf.RoundToInt(gameTime) / 60;
         var seconds = Mathf.RoundToInt(gameTime) % 60;
 
@@ -44,11 +49,20 @@ public class GameTime : MonoBehaviour
             else if (Score.score >= 3)
             {
                 StartCoroutine(Fade("WinScene"));
+                SendToArduino();
             }
 
         }
 
     }
+
+    public void SendToArduino()
+    {
+        myData.Open();
+        myData.WriteLine("1");
+        myData.Close();
+    }
+
     IEnumerator Fade(string sceneName)
     {
         Debug.Log(sceneName);
