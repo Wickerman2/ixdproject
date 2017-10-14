@@ -157,3 +157,4 @@ e4963b2c243b32ec0bcc19e60e2e9798 Assembly-CSharp.dll:.ToucanOpenMouth
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ScorePoint
 760d61dcd067c1148397c7cadd4f2e33 Assembly-CSharp.dll:.InfraredSourceView
 da3b30cddd311baf1f825f9ba0463e6b Assembly-CSharp.dll:.GameControl
+c323e2994f00b83e1a6c86db27819a67 Assembly-CSharp.dll:.DetectPlayer

@@ -46,10 +46,5 @@ public class CountDownTimer : MonoBehaviour {
             GetComponent<GUIText>().enabled = false;
 
         }
-
-
-
-        //Debug.Log(cd_timer);
-
     }
 }

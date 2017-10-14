@@ -10,10 +10,12 @@ public class GameControl : MonoBehaviour
     public Animator Anim;
     public Image Img;
 
+    private DetectPlayer detectPlayer; 
+
     // Use this for initialization
     void Start()
     {
-
+        detectPlayer = GameObject.Find("GameControl").GetComponent<DetectPlayer>();
     }
 
     void Update()
@@ -40,7 +42,6 @@ public class GameControl : MonoBehaviour
 
     IEnumerator Fade(string sceneName)
     {
-        Debug.Log(sceneName);
         Anim.SetBool("Fade", true);
         yield return new WaitUntil(() => Img.color.a == 1);
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);

@@ -23,7 +23,6 @@ public class BirdMovement : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
         animator = transform.GetComponentInChildren<Animator>();
         audioSource.clip = flapAudio;
 
@@ -37,7 +36,7 @@ public class BirdMovement : MonoBehaviour
     // Do Graphic & Input updates here
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             doFlap();
         }
@@ -48,7 +47,6 @@ public class BirdMovement : MonoBehaviour
         if (collision.CompareTag("Berry"))
         {
             animator.SetTrigger("DoOpenMouth");
-            animator.SetTrigger("DoSwallow");
         }
     }
 

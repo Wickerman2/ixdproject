@@ -70,7 +70,8 @@ if (Serial.available() > 0) {
               delay(TURN_TIME);             
               digitalWrite(LED_BUILTIN, LOW);            
               delay(TURN_TIME);
-              myservo.write(90);             
+              myservo.write(90); 
+              Serial.flush();            
     }
   }
 }

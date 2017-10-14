@@ -18,8 +18,7 @@ public class GameTime : MonoBehaviour
     public Image Img;
     public float gameTime = 30.0f;
     public SerialPort myData = new SerialPort("COM6", 19200);
-
-
+    private DetectPlayer detectPlayer;
 
     private void Start()
     {
@@ -29,7 +28,6 @@ public class GameTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         var minutes = Mathf.RoundToInt(gameTime) / 60;
         var seconds = Mathf.RoundToInt(gameTime) % 60;
 

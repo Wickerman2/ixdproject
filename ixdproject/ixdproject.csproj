@@ -95,6 +95,7 @@
     <Compile Include="Assets\Scripts\DepthSourceManager.cs" />
     <Compile Include="Assets\Scripts\DepthSourceView.cs" />
     <Compile Include="Assets\Scripts\DetectJoints.cs" />
+    <Compile Include="Assets\Scripts\DetectPlayer.cs" />
     <Compile Include="Assets\Scripts\DisableOnStart.cs" />
     <Compile Include="Assets\Scripts\DispenseHandler.cs" />
     <Compile Include="Assets\Scripts\DontDestroy.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="Assets\Scripts\GroundMover.cs" />
     <Compile Include="Assets\Scripts\InfraredSourceManager.cs" />
     <Compile Include="Assets\Scripts\InfraredSourceView.cs" />
+    <Compile Include="Assets\Scripts\LoadSceneTimer.cs" />
     <Compile Include="Assets\Scripts\MiddleGroundMover.cs" />
     <Compile Include="Assets\Scripts\MultiSourceManager.cs" />
     <Compile Include="Assets\Scripts\PickupSeed.cs" />
