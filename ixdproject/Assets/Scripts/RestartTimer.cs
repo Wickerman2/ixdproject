@@ -27,7 +27,7 @@ public class RestartTimer : MonoBehaviour
         {
             GetComponent<GUIText>().enabled = true;
         }
-        else if (timer == "-1")
+        else if (timer == "0")
         {
             StartCoroutine(Fade("LoadingScene"));
         }

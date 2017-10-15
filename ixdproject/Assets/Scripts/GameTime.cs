@@ -47,19 +47,19 @@ public class GameTime : MonoBehaviour
             else if (Score.score >= 3)
             {
                 StartCoroutine(Fade("WinScene"));
-                SendToArduino();
+                Score.SendToArduino();
             }
 
         }
 
     }
 
-    public void SendToArduino()
-    {
-        myData.Open();
-        myData.WriteLine("1");
-        myData.Close();
-    }
+    //public void SendToArduino()
+    //{
+    //    myData.Open();
+    //    myData.WriteLine("1");
+    //    myData.Close();
+    //}
 
     IEnumerator Fade(string sceneName)
     {

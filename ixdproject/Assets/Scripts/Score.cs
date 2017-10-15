@@ -9,20 +9,13 @@ public class Score : MonoBehaviour
 {
 
     public static int score = 0;
-    static int highScore = 0;
-    public SerialPort myData = new SerialPort("COM6", 19200);
+    public static SerialPort myData = new SerialPort("COM6", 19200);
     public Score instanceOfScore;
     static Score instance;
-
-
-
-
-
     BirdMovement bird;
 
     void Start()
     {
-
         int counter = 0;
         foreach (string str in SerialPort.GetPortNames())
         {
@@ -40,43 +33,29 @@ public class Score : MonoBehaviour
 
         bird = player_go.GetComponent<BirdMovement>();
         score = 0;
-        highScore = PlayerPrefs.GetInt("highScore", 0);
     }
 
     static public void AddPoint()
     {
-
-        if (instance.bird.dead)
-            return;
-
         score++;
+        Debug.Log("PICKUP");
 
-        Score sc = new Score();
-        sc.SendToArduino();
-
-
-        if (score > highScore)
-        {
-            highScore = score;
-        }
-
-
-            //Send info to machine
-        
+        //SendToArduino();
+        BirdMovement.forwardSpeed = BirdMovement.forwardSpeed + 1.0f;
     }
 
     void OnDestroy()
     {
         instance = null;
-        PlayerPrefs.SetInt("highScore", highScore);
     }
 
     void Update()
     {
         GetComponent<GUIText>().text = "" + score;
     }
-    public void SendToArduino()
+    public static void SendToArduino()
     {
+        Debug.Log("Arduino!");
         myData.Open();
         myData.WriteLine("1");
         myData.Close();

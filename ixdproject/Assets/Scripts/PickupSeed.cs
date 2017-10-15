@@ -11,8 +11,6 @@ public class PickupSeed : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip pickupAudio;
 
-
-
     // Use this for initialization
     void Start()
     {

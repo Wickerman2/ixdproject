@@ -31,6 +31,8 @@ public class DetectJoints : MonoBehaviour
     private ulong currTrackingId = 0;
     public BirdMovement instanceOfBM;
     public bool GameStarted = false;
+    float playerLength;
+
 
     // Use this for initialization
     void Start () {
@@ -67,11 +69,10 @@ public class DetectJoints : MonoBehaviour
             currentLeftHandPositionX = body.Joints[HandLeft].Position.X;
             currentRightHandPositionX = body.Joints[HandRight].Position.X;
 
-            flapthreshold = (currentRightHandPositionX - currentLeftHandPositionX) / 2.5f;
+            playerLength = PlayerPrefs.GetFloat("PlayerLength");
+            flapthreshold = (playerLength / 6.5f);
 
             timer += Time.deltaTime;
-            if (timer > 0.20f)
-            {
                 if (timer > 0.15)
                 {
                     if (previousLeftHandPositionY - currentLeftHandPositionY > flapthreshold && previousRightHandPositionY - currentRightHandPositionY > flapthreshold)
@@ -82,7 +83,6 @@ public class DetectJoints : MonoBehaviour
                     previousRightHandPositionY = currentRightHandPositionY;
                     timer = 0f;
                 }
-            }
         }
     }
 

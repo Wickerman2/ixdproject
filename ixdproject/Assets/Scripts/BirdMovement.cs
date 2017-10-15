@@ -6,7 +6,7 @@ public class BirdMovement : MonoBehaviour
 {
 
     public float flapSpeed = 150f;
-    public float forwardSpeed = 8f;
+    public static float forwardSpeed;
     SerialPort myData = new SerialPort("COM4", 19200);
 
     public AudioClip flapAudio;

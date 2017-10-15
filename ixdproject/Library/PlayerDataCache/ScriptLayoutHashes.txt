@@ -111,6 +111,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 528ea1fd7c01796fc60c4e2f172ea229 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.DispenseHandler
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.GroundMover
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.LoadSceneTimer
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
@@ -121,7 +122,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.Spa
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ColorSourceManager
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.DontDestroy
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.MiddleGroundMover
-d7e9becabd3710194048610a26a2c735 Assembly-CSharp.dll:.BirdMovement
+8bdfefe06f16e30c0f202da1142a3afd Assembly-CSharp.dll:.BirdMovement
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BodySourceManager
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.CountDownTimer
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
@@ -145,6 +146,7 @@ cea929234e5c76e68bc9c48757004107 Assembly-CSharp.dll:.PickupSeed
 64eb32cc721b1cc68a91ed57461e188c UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.RemoteTestResultSender
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.DisableOnStart
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:Helper.EventPump
+b2f48bf7e9336af5a8e7dd2d72111972 Assembly-CSharp.dll:.DetectPlayer
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
@@ -157,4 +159,3 @@ e4963b2c243b32ec0bcc19e60e2e9798 Assembly-CSharp.dll:.ToucanOpenMouth
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ScorePoint
 760d61dcd067c1148397c7cadd4f2e33 Assembly-CSharp.dll:.InfraredSourceView
 da3b30cddd311baf1f825f9ba0463e6b Assembly-CSharp.dll:.GameControl
-c323e2994f00b83e1a6c86db27819a67 Assembly-CSharp.dll:.DetectPlayer

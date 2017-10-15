@@ -19,8 +19,7 @@ public class CountDownTimer : MonoBehaviour {
         DJ = GameObject.Find("PlayerBird").GetComponent<DetectJoints>();
         BM = GameObject.Find("PlayerBird").GetComponent<BirdMovement>();
         BM_RB = GameObject.Find("PlayerBird").GetComponent<Rigidbody2D>();
-        BM.forwardSpeed = 0f;
-
+        BirdMovement.forwardSpeed = 0f;
         BM_RB.bodyType = RigidbodyType2D.Kinematic;
     }
 
@@ -42,7 +41,7 @@ public class CountDownTimer : MonoBehaviour {
         {
             DJ.GameStarted = true;
             BM_RB.bodyType = RigidbodyType2D.Dynamic;
-            BM.forwardSpeed = 8f;
+            BirdMovement.forwardSpeed = 6f;
             GetComponent<GUIText>().enabled = false;
 
         }
