@@ -2,22 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
-
 public class CountDownTimer : MonoBehaviour {
 
-    private DetectJoints DJ;
-    private BirdMovement BM;
-    private Rigidbody2D BM_RB;
+    bool playAudio = false;
+    public AudioClip countdownSound;
+    public AudioSource audioSource;
 
+    private DetectJoints DJ;
+    private Rigidbody2D BM_RB;
 
     float cd_timer = 3.5f;
 
     // Use this for initialization
     void Start () {
+
+        audioSource.clip = countdownSound;
+
         DJ = GameObject.Find("PlayerBird").GetComponent<DetectJoints>();
-        BM = GameObject.Find("PlayerBird").GetComponent<BirdMovement>();
         BM_RB = GameObject.Find("PlayerBird").GetComponent<Rigidbody2D>();
         BirdMovement.forwardSpeed = 0f;
         BM_RB.bodyType = RigidbodyType2D.Kinematic;
@@ -32,18 +33,22 @@ public class CountDownTimer : MonoBehaviour {
         if (timer == "3")
         {
             GetComponent<GUIText>().enabled = true;
+            if (!playAudio)
+            {
+                audioSource.PlayOneShot(countdownSound);
+                playAudio = true;
+            }
         }
             else if(timer == "0")
         {
             GetComponent<GUIText>().text = "Start!";
         }
-            else if (timer == "-1")
+        else if (timer == "-1")
         {
             DJ.GameStarted = true;
             BM_RB.bodyType = RigidbodyType2D.Dynamic;
             BirdMovement.forwardSpeed = 6f;
             GetComponent<GUIText>().enabled = false;
-
         }
     }
 }

@@ -32,7 +32,6 @@ public class PickupSeed : MonoBehaviour
             Destroy(this.gameObject);
             SpawnSeed();
             audioSource.PlayOneShot(pickupAudio);
-
         }
     }
 
@@ -41,7 +40,7 @@ public class PickupSeed : MonoBehaviour
         gameObject.GetComponent<BoxCollider2D>().enabled = true;
         Vector3 pos = transform.position;
         pos.y = Random.Range(seedMin, seedMax);
-        pos.x = pos.x + 50f;
+        pos.x = pos.x + 40.0f;
         Instantiate(gameObject, pos, transform.rotation);
     }
 

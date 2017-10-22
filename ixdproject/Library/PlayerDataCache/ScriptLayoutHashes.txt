@@ -124,7 +124,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.Spa
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.MiddleGroundMover
 8bdfefe06f16e30c0f202da1142a3afd Assembly-CSharp.dll:.BirdMovement
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BodySourceManager
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.CountDownTimer
+499120dce592420d24db5f67e6b08810 Assembly-CSharp.dll:.CountDownTimer
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 60b2bb652410a5867a5ab9a01cd38461 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -146,7 +146,7 @@ cea929234e5c76e68bc9c48757004107 Assembly-CSharp.dll:.PickupSeed
 64eb32cc721b1cc68a91ed57461e188c UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.RemoteTestResultSender
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.DisableOnStart
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:Helper.EventPump
-b2f48bf7e9336af5a8e7dd2d72111972 Assembly-CSharp.dll:.DetectPlayer
+5fa56c8d752caf5244f2a16a37a9cfb3 Assembly-CSharp.dll:.DetectPlayer
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule

@@ -10,19 +10,16 @@ public class GameControl : MonoBehaviour
     public Animator Anim;
     public Image Img;
 
-    private DetectPlayer detectPlayer; 
-
     // Use this for initialization
     void Start()
     {
-        detectPlayer = GameObject.Find("GameControl").GetComponent<DetectPlayer>();
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            SceneManager.LoadScene("LoadingScene", LoadSceneMode.Single);
+            Score.SendToArduino();
         }
         else if(Input.GetKeyDown(KeyCode.Alpha2))
         {

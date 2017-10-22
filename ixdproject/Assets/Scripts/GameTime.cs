@@ -54,12 +54,6 @@ public class GameTime : MonoBehaviour
 
     }
 
-    //public void SendToArduino()
-    //{
-    //    myData.Open();
-    //    myData.WriteLine("1");
-    //    myData.Close();
-    //}
 
     IEnumerator Fade(string sceneName)
     {

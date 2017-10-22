@@ -13,6 +13,9 @@ public class DetectJoints : MonoBehaviour
     public JointType HandRight;
     float timer;
     float flapthreshold;
+    float flapRate = 0.75f;
+    float nextFlap;
+    int numberOfFlaps = 0;
 
     GameObject LeftHandCube;
     GameObject RightHandCube;
@@ -22,16 +25,15 @@ public class DetectJoints : MonoBehaviour
     private Body[] bodies;
     public Body body;
 
-    float previousLeftHandPositionY;
-    float previousRightHandPositionY;
-    float currentLeftHandPositionY;
-    float currentRightHandPositionY;
-    float currentLeftHandPositionX;
-    float currentRightHandPositionX;
+    float previousLeftHandPositionY = 0.0f;
+    float previousRightHandPositionY = 0.0f;
+    float currentLeftHandPositionY = 0.0f;
+    float currentRightHandPositionY = 0.0f;
+
     private ulong currTrackingId = 0;
     public BirdMovement instanceOfBM;
     public bool GameStarted = false;
-    float playerLength;
+    float playerLength = 0.0f;
 
 
     // Use this for initialization
@@ -46,6 +48,10 @@ public class DetectJoints : MonoBehaviour
             bodyManager = BodySrcManager.GetComponent<BodySourceManager>();
 
         }
+
+        playerLength = PlayerPrefs.GetFloat("PlayerLength");
+        //flapthreshold = (playerLength / 6.0f);
+        flapthreshold = 0.18f;
     }
 
     void Update()
@@ -60,24 +66,26 @@ public class DetectJoints : MonoBehaviour
         }
     }
 
+
     private void trackBody(Body body)
     {
         if (body.IsTracked)
         {
             currentLeftHandPositionY = body.Joints[HandLeft].Position.Y;
             currentRightHandPositionY = body.Joints[HandRight].Position.Y;
-            currentLeftHandPositionX = body.Joints[HandLeft].Position.X;
-            currentRightHandPositionX = body.Joints[HandRight].Position.X;
-
-            playerLength = PlayerPrefs.GetFloat("PlayerLength");
-            flapthreshold = (playerLength / 6.5f);
 
             timer += Time.deltaTime;
-                if (timer > 0.15)
+
+                if (timer > 0.10 && Time.time > nextFlap)
                 {
                     if (previousLeftHandPositionY - currentLeftHandPositionY > flapthreshold && previousRightHandPositionY - currentRightHandPositionY > flapthreshold)
                     {
-                        instanceOfBM.doFlap();
+                        if (numberOfFlaps > 0)
+                        {
+                            instanceOfBM.doFlap();
+                            nextFlap = Time.time + flapRate;
+                        }
+                            numberOfFlaps++;
                     }
                     previousLeftHandPositionY = currentLeftHandPositionY;
                     previousRightHandPositionY = currentRightHandPositionY;

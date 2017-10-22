@@ -8,14 +8,23 @@ public class DetectPlayer : MonoBehaviour
     public GameObject BodySrcManager;
     private BodySourceManager bodyManager;
 
+    public UnityEngine.AudioSource audioSource;
+    public AudioClip bodyDetected_true;
+    public AudioClip bodyDetected_false;
+
     private Body[] bodies;
     public Body body;
     public bool playerDetected = false;
     private ulong currTrackingId = 0;
     public float playerLength;
+    bool detectTrueAudio = false;
+    bool detectFalseAudio = true;
 
     void Start()
     {
+        audioSource.clip = bodyDetected_true;
+        audioSource.clip = bodyDetected_false;
+
         if (BodySrcManager == null)
         {
             Debug.Log("BodySourceManager is null! Assign a bodysrcManager ");
@@ -39,13 +48,27 @@ public class DetectPlayer : MonoBehaviour
         }
         Debug.Log("Player Detected: " + playerDetected);
 
-        if (playerDetected == true)
+        if (playerDetected == true) 
         {
             GameObject.Find("PlayerDetectedGUI").GetComponent<GUIText>().enabled = true;
+            if (!detectTrueAudio)
+            {
+                audioSource.PlayOneShot(bodyDetected_true);
+                detectTrueAudio = true;
+            }
+            detectFalseAudio = false;
         }
         else if (playerDetected == false)
         {
             GameObject.Find("PlayerDetectedGUI").GetComponent<GUIText>().enabled = false;
+            detectTrueAudio = false;
+
+            if (!detectFalseAudio)
+            {
+                audioSource.PlayOneShot(bodyDetected_false);
+                detectFalseAudio = true;
+            }
+            detectTrueAudio = false;
         }
     }
 
@@ -74,7 +97,7 @@ public class DetectPlayer : MonoBehaviour
 
                     Debug.Log("PlayerLength 2 : " + playerLength);
 
-                    if (zMeters < 2.5f && zMeters > 1.5f && xMeters < 0.2f && xMeters > -0.2f)
+                    if (zMeters < 2.8f && zMeters > 1.8f && xMeters < 0.2f && xMeters > -0.2f)
                     {
                         currTrackingId = body.TrackingId;
                         playerDetected = true;
@@ -95,7 +118,7 @@ public class DetectPlayer : MonoBehaviour
                 float zMeters = body.Joints[JointType.SpineBase].Position.Z;
                 float xMeters = body.Joints[JointType.SpineBase].Position.X;
 
-                if (body.IsTracked && body.TrackingId == currTrackingId && zMeters < 2.5f && zMeters > 1.5f && xMeters < 0.2f && xMeters > -0.2f)
+                if (body.IsTracked && body.TrackingId == currTrackingId && zMeters < 2.8f && zMeters > 1.8f && xMeters < 0.2f && xMeters > -0.2f)
                 {
                     playerDetected = true;
 

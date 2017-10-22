@@ -29,7 +29,7 @@ public class BGLooper : MonoBehaviour
         if (collider.tag == "Berry")
         {
             pos.y = Random.Range(berryMin, berryMax);
-            pos.x = player.transform.position.x + 22.0f;
+            pos.x = player.transform.position.x + 18.0f;
         }
 
         collider.transform.position = pos;
