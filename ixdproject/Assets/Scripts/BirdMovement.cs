@@ -4,21 +4,14 @@ using System.IO.Ports;
 
 public class BirdMovement : MonoBehaviour
 {
-
     public float flapSpeed = 150f;
     public static float forwardSpeed;
-    SerialPort myData = new SerialPort("COM4", 19200);
-
     public AudioClip flapAudio;
     public AudioSource audioSource;
 
-
     Animator animator;
-
     public bool dead = false;
-    float deathCooldown;
     float distance;
-    public bool godMode = false;
 
     // Use this for initialization
     void Start()
@@ -33,7 +26,6 @@ public class BirdMovement : MonoBehaviour
 
     }
 
-    // Do Graphic & Input updates here
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))

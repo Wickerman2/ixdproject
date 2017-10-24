@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-public class RestartTimer : MonoBehaviour
+public class RestartTimer : MonoBehaviour //A script with a timer to start over to the loading scene again! 
 {
     float restart_timer = 10.5f;
     public Animator Anim;

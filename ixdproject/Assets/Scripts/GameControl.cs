@@ -15,7 +15,7 @@ public class GameControl : MonoBehaviour
     {
     }
 
-    void Update()
+    void Update() // Some code for debugging to reach all scenes and to activate the seed dispenser. 
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -23,9 +23,7 @@ public class GameControl : MonoBehaviour
         }
         else if(Input.GetKeyDown(KeyCode.Alpha2))
         {
-            Debug.Log("2");
             StartCoroutine(Fade("GameScene"));
-
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {

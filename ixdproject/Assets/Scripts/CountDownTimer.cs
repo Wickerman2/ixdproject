@@ -8,8 +8,8 @@ public class CountDownTimer : MonoBehaviour {
     public AudioClip countdownSound;
     public AudioSource audioSource;
 
-    private DetectJoints DJ;
-    private Rigidbody2D BM_RB;
+    private DetectFlap detectFlap;
+    private Rigidbody2D birdRigidbody;
 
     float cd_timer = 3.5f;
 
@@ -18,10 +18,10 @@ public class CountDownTimer : MonoBehaviour {
 
         audioSource.clip = countdownSound;
 
-        DJ = GameObject.Find("PlayerBird").GetComponent<DetectJoints>();
-        BM_RB = GameObject.Find("PlayerBird").GetComponent<Rigidbody2D>();
+        detectFlap = GameObject.Find("PlayerBird").GetComponent<DetectFlap>();
+        birdRigidbody = GameObject.Find("PlayerBird").GetComponent<Rigidbody2D>();
         BirdMovement.forwardSpeed = 0f;
-        BM_RB.bodyType = RigidbodyType2D.Kinematic;
+        birdRigidbody.bodyType = RigidbodyType2D.Kinematic;
     }
 
     // Update is called once per frame
@@ -45,8 +45,8 @@ public class CountDownTimer : MonoBehaviour {
         }
         else if (timer == "-1")
         {
-            DJ.GameStarted = true;
-            BM_RB.bodyType = RigidbodyType2D.Dynamic;
+            detectFlap.GameStarted = true;
+            birdRigidbody.bodyType = RigidbodyType2D.Dynamic;
             BirdMovement.forwardSpeed = 6f;
             GetComponent<GUIText>().enabled = false;
         }

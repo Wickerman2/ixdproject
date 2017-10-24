@@ -16,7 +16,6 @@ public class DetectPlayer : MonoBehaviour
     public Body body;
     public bool playerDetected = false;
     private ulong currTrackingId = 0;
-    public float playerLength;
     bool detectTrueAudio = false;
     bool detectFalseAudio = true;
 
@@ -33,8 +32,6 @@ public class DetectPlayer : MonoBehaviour
         {
             bodyManager = BodySrcManager.GetComponent<BodySourceManager>();
         }
-        Debug.Log("PlayerLength 1: " + playerLength);
-
         GameObject.Find("PlayerDetectedGUI").GetComponent<GUIText>().enabled = false;
     }
 
@@ -72,7 +69,7 @@ public class DetectPlayer : MonoBehaviour
         }
     }
 
-    private Body GetActiveBody()
+    private Body GetActiveBody() // In the loading scene, to see if the player is in front of the screen to start the game. 
     {
         if (bodyManager == null)
         {
@@ -92,12 +89,7 @@ public class DetectPlayer : MonoBehaviour
                     float left_foot = body.Joints[JointType.FootLeft].Position.Y;
                     float right_foot = body.Joints[JointType.FootRight].Position.Y;
 
-                    playerLength = head - ((left_foot + right_foot) / 2);
-                    PlayerPrefs.SetFloat("PlayerLength", playerLength);
-
-                    Debug.Log("PlayerLength 2 : " + playerLength);
-
-                    if (zMeters < 2.8f && zMeters > 1.8f && xMeters < 0.2f && xMeters > -0.2f)
+                    if (zMeters < 2.8f && zMeters > 1.8f && xMeters < 0.2f && xMeters > -0.2f) //This could be adjusted to detect where the player is to start the game. 
                     {
                         currTrackingId = body.TrackingId;
                         playerDetected = true;
@@ -118,7 +110,7 @@ public class DetectPlayer : MonoBehaviour
                 float zMeters = body.Joints[JointType.SpineBase].Position.Z;
                 float xMeters = body.Joints[JointType.SpineBase].Position.X;
 
-                if (body.IsTracked && body.TrackingId == currTrackingId && zMeters < 2.8f && zMeters > 1.8f && xMeters < 0.2f && xMeters > -0.2f)
+                if (body.IsTracked && body.TrackingId == currTrackingId && zMeters < 2.8f && zMeters > 1.8f && xMeters < 0.2f && xMeters > -0.2f) //This could be adjusted to detect where the player is to start the game. 
                 {
                     playerDetected = true;
 

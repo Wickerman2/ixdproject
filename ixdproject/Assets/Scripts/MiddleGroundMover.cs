@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MiddleGroundMover : MonoBehaviour
+public class MiddleGroundMover : MonoBehaviour ////Letting the ground moving along with the player, but with a different velocity than ground.
 {
 
     Rigidbody2D player;

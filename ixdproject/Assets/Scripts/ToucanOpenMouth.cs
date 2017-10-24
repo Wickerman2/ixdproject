@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ToucanOpenMouth : MonoBehaviour {
+public class ToucanOpenMouth : MonoBehaviour { //Script to simulate the an animation of the Tucan open it's mouth during the loading scene.
     public AudioClip birdCall1;
     public AudioClip birdCall2;
     public AudioSource audioSource;

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GroundMover : MonoBehaviour {
+public class GroundMover : MonoBehaviour { //Letting the ground moving along with the player. 
 
 	Rigidbody2D player;
 

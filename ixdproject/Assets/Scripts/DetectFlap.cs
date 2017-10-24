@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Windows.Kinect;
 
-public class DetectJoints : MonoBehaviour
+public class DetectFlap : MonoBehaviour
 {
 
     public GameObject BodySrcManager;
@@ -31,14 +31,14 @@ public class DetectJoints : MonoBehaviour
     float currentRightHandPositionY = 0.0f;
 
     private ulong currTrackingId = 0;
-    public BirdMovement instanceOfBM;
+    public BirdMovement birdMovement;
     public bool GameStarted = false;
     float playerLength = 0.0f;
 
 
     // Use this for initialization
     void Start () {
-        instanceOfBM = GameObject.Find("PlayerBird").GetComponent<BirdMovement>();
+        birdMovement = GameObject.Find("PlayerBird").GetComponent<BirdMovement>();
         if (BodySrcManager == null)
         {
             Debug.Log("BodySourceManager is null! Assign a bodysrcManager ");
@@ -48,9 +48,6 @@ public class DetectJoints : MonoBehaviour
             bodyManager = BodySrcManager.GetComponent<BodySourceManager>();
 
         }
-
-        playerLength = PlayerPrefs.GetFloat("PlayerLength");
-        //flapthreshold = (playerLength / 6.0f);
         flapthreshold = 0.18f;
     }
 
@@ -61,13 +58,13 @@ public class DetectJoints : MonoBehaviour
             body = GetActiveBody();
             if (body != null)
             {
-                trackBody(body);
+                trackFlapping(body);
             }
         }
     }
 
 
-    private void trackBody(Body body)
+    private void trackFlapping(Body body) //Basically measures the y-axis of both left and right hand of player. If the player moves the hands down at a particular pace and for a certain time, the bird will flap!
     {
         if (body.IsTracked)
         {
@@ -80,10 +77,10 @@ public class DetectJoints : MonoBehaviour
                 {
                     if (previousLeftHandPositionY - currentLeftHandPositionY > flapthreshold && previousRightHandPositionY - currentRightHandPositionY > flapthreshold)
                     {
-                        if (numberOfFlaps > 0)
+                        if (numberOfFlaps > 0) // To ignore the first flap, might be a better solution for this. 
                         {
-                            instanceOfBM.doFlap();
-                            nextFlap = Time.time + flapRate;
+                            birdMovement.doFlap();
+                            nextFlap = Time.time + flapRate; // Used for cooldown, helps to prevent double triggering. 
                         }
                             numberOfFlaps++;
                     }
@@ -94,7 +91,7 @@ public class DetectJoints : MonoBehaviour
         }
     }
 
-    private Body GetActiveBody()
+    private Body GetActiveBody() // To locate the active player, in case there are many players in the background. 
     {
         if (bodyManager == null)
         {

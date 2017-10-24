@@ -94,10 +94,9 @@
     <Compile Include="Assets\Scripts\CountDownTimer.cs" />
     <Compile Include="Assets\Scripts\DepthSourceManager.cs" />
     <Compile Include="Assets\Scripts\DepthSourceView.cs" />
-    <Compile Include="Assets\Scripts\DetectJoints.cs" />
+    <Compile Include="Assets\Scripts\DetectFlap.cs" />
     <Compile Include="Assets\Scripts\DetectPlayer.cs" />
     <Compile Include="Assets\Scripts\DisableOnStart.cs" />
-    <Compile Include="Assets\Scripts\DispenseHandler.cs" />
     <Compile Include="Assets\Scripts\DontDestroy.cs" />
     <Compile Include="Assets\Scripts\GameControl.cs" />
     <Compile Include="Assets\Scripts\GameTime.cs" />
@@ -107,12 +106,11 @@
     <Compile Include="Assets\Scripts\LoadSceneTimer.cs" />
     <Compile Include="Assets\Scripts\MiddleGroundMover.cs" />
     <Compile Include="Assets\Scripts\MultiSourceManager.cs" />
-    <Compile Include="Assets\Scripts\PickupSeed.cs" />
+    <Compile Include="Assets\Scripts\PickupBerry.cs" />
     <Compile Include="Assets\Scripts\RestartTimer.cs" />
     <Compile Include="Assets\Scripts\Score.cs" />
     <Compile Include="Assets\Scripts\ScorePoint.cs" />
     <Compile Include="Assets\Scripts\SeedPickup.cs" />
-    <Compile Include="Assets\Scripts\StartScreenScript.cs" />
     <Compile Include="Assets\Scripts\ToucanOpenMouth.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

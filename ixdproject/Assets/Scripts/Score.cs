@@ -9,7 +9,7 @@ public class Score : MonoBehaviour
 {
 
     public static int score = 0;
-    public static SerialPort myData = new SerialPort("COM6", 19200);
+    public static SerialPort myData = new SerialPort("COM6", 19200); //Check if this matches with the Arduino code! 
     public Score instanceOfScore;
     static Score instance;
     BirdMovement bird;
@@ -17,7 +17,7 @@ public class Score : MonoBehaviour
     void Start()
     {
         int counter = 0;
-        foreach (string str in SerialPort.GetPortNames())
+        foreach (string str in SerialPort.GetPortNames()) //Checking if there is any Arduino connected to the computer.
         {
             Debug.Log(string.Format("Port :" + str));
             counter++;
@@ -38,9 +38,6 @@ public class Score : MonoBehaviour
     static public void AddPoint()
     {
         score++;
-        Debug.Log("PICKUP");
-
-        //SendToArduino();
         BirdMovement.forwardSpeed = BirdMovement.forwardSpeed + 1.0f;
     }
 
@@ -55,7 +52,6 @@ public class Score : MonoBehaviour
     }
     public static void SendToArduino()
     {
-        Debug.Log("Arduino!");
         myData.Open();
         myData.WriteLine("1");
         myData.Close();

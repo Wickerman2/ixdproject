@@ -17,7 +17,7 @@ public class BGLooper : MonoBehaviour
 
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
+    void OnTriggerEnter2D(Collider2D collider) // To loop the background! 
     {
 
         float widthOfBGObject = ((BoxCollider2D)collider).size.x;
@@ -26,7 +26,7 @@ public class BGLooper : MonoBehaviour
 
         pos.x += widthOfBGObject * numBGPanels;
 
-        if (collider.tag == "Berry")
+        if (collider.tag == "Berry") // To move the missed berries! 
         {
             pos.y = Random.Range(berryMin, berryMax);
             pos.x = player.transform.position.x + 18.0f;

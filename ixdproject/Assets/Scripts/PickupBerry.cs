@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickupSeed : MonoBehaviour
+public class PickupBerry : MonoBehaviour
 {
 
     public float seedMax = 1.65f;
@@ -24,18 +24,18 @@ public class PickupSeed : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision) // Every time the bird picks up a berry. 
     {
         if (collision.CompareTag("Player"))
         {
             Score.AddPoint();
             Destroy(this.gameObject);
-            SpawnSeed();
+            SpawnBerry();
             audioSource.PlayOneShot(pickupAudio);
         }
     }
 
-    public void SpawnSeed()
+    public void SpawnBerry() 
     {
         gameObject.GetComponent<BoxCollider2D>().enabled = true;
         Vector3 pos = transform.position;

@@ -5,25 +5,19 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.IO.Ports;
 
-
-
-
-
-
-public class GameTime : MonoBehaviour
+public class GameTime : MonoBehaviour //This script controls the countdown in the GameScene. 
 {
-    private DetectJoints DJ;
+    private DetectFlap detectFlap;
     private Score Score;
     public Animator Anim;
     public Image Img;
-    public float gameTime = 30.0f;
-    public SerialPort myData = new SerialPort("COM6", 19200);
+    public float gameTime = 60.0f;
     private DetectPlayer detectPlayer;
 
     private void Start()
     {
         Score = GameObject.Find("Score").GetComponent<Score>();
-        DJ = GameObject.Find("PlayerBird").GetComponent<DetectJoints>();
+        detectFlap = GameObject.Find("PlayerBird").GetComponent<DetectFlap>();
     }
     // Update is called once per frame
     void Update()
@@ -31,7 +25,7 @@ public class GameTime : MonoBehaviour
         var minutes = Mathf.RoundToInt(gameTime) / 60;
         var seconds = Mathf.RoundToInt(gameTime) % 60;
 
-        if (DJ.GameStarted == true)
+        if (detectFlap.GameStarted == true)
         {
             gameTime -= Time.deltaTime;
         }
@@ -44,7 +38,7 @@ public class GameTime : MonoBehaviour
             {
                 StartCoroutine(Fade("LoseScene"));
             }
-            else if (Score.score >= 3)
+            else if (Score.score >= 3) //If the score is above 3 points, send some information to the Arduino to let it provide the player with seeds. 
             {
                 StartCoroutine(Fade("WinScene"));
                 Score.SendToArduino();

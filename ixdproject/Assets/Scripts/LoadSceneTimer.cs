@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class LoadSceneTimer : MonoBehaviour
+public class LoadSceneTimer : MonoBehaviour // If the player is detected, start a countdown of 5 seconds, and then load the GameScene
 {
 
     float loadSceneTimer = 5.5f;
